@@ -12,12 +12,17 @@ before_script:
   - npm --version
   - docker --version
   - docker run hello-world
+  - svn --version
   - npm install -g yarn
   - yarn --version
-  - yarn add polymer
+  - yarn global add polymer-cli
   - polymer --version
   - polymer analyze
   - polymer install
+  - svn export https://github.com/e7dal/weaviate/trunk/docker ~/tryweaviate
+  - cd ~/tryweaviate
+  - bash run-services.sh
+  - cd -
 script:
   - xvfb-run polymer test
 cache:
