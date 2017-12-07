@@ -6,7 +6,7 @@ addons:
   firefox: latest
   chrome: stable
 language: node_js
-node_js: "6"
+node_js: "lts/boron"
 install: echo "no install yet"
 before_script:
   - npm --version
@@ -21,8 +21,12 @@ before_script:
   - echo not yet polymer install
   - svn export https://github.com/e7dal/weaviate/trunk/docker ~/tryweaviate
   - cd ~/tryweaviate
+  - sed -i 's/# set -x/set -x/' run-services.sh
   - sudo bash run-services.sh
+  - sudo docker ps -a
+  - sudo docker exec -it weaviate cat /var/weaviate/first_run.log
   - cd -
+  - pwd
 script:
   - xvfb-run polymer test
 cache:
