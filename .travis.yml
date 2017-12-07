@@ -1,28 +1,23 @@
+dist: trusty
 sudo: required
 services:
   - docker
-dist: trusty
 addons:
-  firefox: 'latest'
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+  firefox: latest
+  chrome: stable
 language: node_js
-node_js:
-  - "6"
-install: polymer install --variants
+node_js: stable
 before_script:
   - npm --version
+  - npm install -g bower polylint web-component-tester
   - docker --version
   - docker run hello-world
   - npm install -g yarn
   - yarn --version
-  - yarn global add polymer-cli
   - polymer --version
 script:
-  - xvfb-run npm test
-  - xvfb-run npm run test:integration
-  - xvfb-run polymer test
-
+  - xvfb-run wct
+cache:
+  directories:
+  - node_modules
+  - bower_components
