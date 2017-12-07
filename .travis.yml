@@ -23,6 +23,8 @@ before_script:
   - sudo bash run-services.sh
   - sudo docker ps -a
   - sudo docker exec -it weaviate cat /var/weaviate/first_run.log
+  - GET_ROOTKEY=$(docker exec -it weaviate grep -s ROOTKEY /var/weaviate/first_run.log|sed 's/.*ROOTKEY=//')
+  - echo $GET_ROOTKEY
   - cd -
   - yarn global add polymer-cli
   - polymer --version
