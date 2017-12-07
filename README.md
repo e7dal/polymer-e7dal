@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/e7dal/polymer-e7dal.svg?branch=master)](https://travis-ci.org/e7dal/polymer-e7dal)
 # \<e7dal-element\>
 
 a test element
