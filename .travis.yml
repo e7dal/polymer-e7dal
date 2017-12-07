@@ -21,7 +21,7 @@ before_script:
   - echo not yet polymer install
   - svn export https://github.com/e7dal/weaviate/trunk/docker ~/tryweaviate
   - cd ~/tryweaviate
-  - bash run-services.sh
+  - sudo bash run-services.sh
   - cd -
 script:
   - xvfb-run polymer test
