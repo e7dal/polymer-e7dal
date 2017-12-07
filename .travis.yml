@@ -7,7 +7,7 @@ addons:
   chrome: stable
 language: node_js
 node_js: "lts/boron"
-install: echo "no install yet"
+install: echo "no install, should happen in before script"
 before_script:
   - npm --version
   - docker --version
@@ -15,10 +15,6 @@ before_script:
   - svn --version
   - npm install -g yarn
   - yarn --version
-  - yarn global add polymer-cli
-  - echo not yet polymer --version
-  - echo not yet polymer analyze
-  - echo not yet polymer install
   - mkdir ~/tryweaviate
   - cd ~/tryweaviate
   - wget -q -O Dockerfile https://raw.githubusercontent.com/e7dal/weaviate/master/docker/Dockerfile
@@ -28,10 +24,13 @@ before_script:
   - sudo docker ps -a
   - sudo docker exec -it weaviate cat /var/weaviate/first_run.log
   - cd -
-  - pwd
+  - GET_ROOTKEY=$(docker exec -it weaviate grep -s ROOTKEY /var/weaviate/first_run.log|sed 's/.*ROOTKEY=//')
+  - curl -H  "X-API-KEY: $GET_ROOTKEY"  -X GET "http://127.0.0.1:8070/weaviate/v1/meta" -H  "accept: application/json" > meta.json
+  - wc meta.json
+  - yarn global add polymer-cli
+  - polymer --version
+  - polymer analyze
+  - polymer install
+ 
 script:
   - xvfb-run polymer test
-cache:
-  directories:
-  - node_modules
-  - bower_components
