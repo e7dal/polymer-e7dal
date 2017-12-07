@@ -7,16 +7,19 @@ addons:
   chrome: stable
 language: node_js
 node_js: stable
+install: echo "no install yet"
 before_script:
   - npm --version
-  - npm install -g bower polylint web-component-tester
   - docker --version
   - docker run hello-world
   - npm install -g yarn
   - yarn --version
+  - yarn add polymer
   - polymer --version
+  - polymer analyze
+  - polymer install
 script:
-  - xvfb-run wct
+  - xvfb-run polymer test
 cache:
   directories:
   - node_modules
