@@ -11,6 +11,7 @@ language: node_js
 node_js:
   - "node"
   - "8"
+install: yarn install 
 before_script:
   - npm --version
   - docker --version
@@ -18,9 +19,7 @@ before_script:
   - npm install -g yarn
   - yarn --version
   - yarn global add polymer-cli
-  - bower --version
   - polymer --version
-  - yarn install
 script:
   - xvfb-run npm test
   - xvfb-run npm run test:integration
