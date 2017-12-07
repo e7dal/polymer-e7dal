@@ -23,7 +23,7 @@ before_script:
   - sudo bash run-services.sh
   - sudo docker ps -a
   - sudo docker exec -it weaviate cat /var/weaviate/first_run.log
-  - GET_ROOTKEY=$(docker exec -it weaviate grep -s ROOTKEY /var/weaviate/first_run.log|sed 's/.*ROOTKEY=//')
+  - GET_ROOTKEY=$(docker exec -it weaviate grep -s ROOTKEY /var/weaviate/first_run.log|sed 's/.*ROOTKEY=//'|sed 's/\\r//g')
   - echo $GET_ROOTKEY
   - sudo apt-get install httpie
   - http :8070/weaviate/v1/meta X-API-KEY:$GET_ROOTKEY
