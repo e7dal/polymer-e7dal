@@ -19,8 +19,10 @@ before_script:
   - echo not yet polymer --version
   - echo not yet polymer analyze
   - echo not yet polymer install
-  - svn export https://github.com/e7dal/weaviate/trunk/docker ~/tryweaviate
+  - mkdir ~/tryweaviate
   - cd ~/tryweaviate
+  - wget -q -O Dockerfile https://raw.githubusercontent.com/e7dal/weaviate/master/docker/Dockerfile
+  - wget -q -O run-services.sh https://raw.githubusercontent.com/e7dal/weaviate/master/docker/run-services.sh
   - sed -i 's/# set -x/set -x/' run-services.sh
   - sudo bash run-services.sh
   - sudo docker ps -a
