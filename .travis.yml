@@ -6,7 +6,7 @@ addons:
   firefox: latest
   chrome: stable
 language: node_js
-node_js: stable
+node_js: "6"
 install: echo "no install yet"
 before_script:
   - npm --version
