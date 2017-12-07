@@ -26,7 +26,7 @@ before_script:
   - GET_ROOTKEY=$(docker exec -it weaviate grep -s ROOTKEY /var/weaviate/first_run.log|sed 's/.*ROOTKEY=//')
   - echo $GET_ROOTKEY
   - cd -
-  - yarn global add polymer-cli
+  - npm install -g polymer-cli
   - polymer --version
   - polymer analyze
   - polymer install
