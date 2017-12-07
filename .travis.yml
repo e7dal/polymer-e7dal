@@ -16,7 +16,6 @@ before_script:
   - npm install -g yarn
   - yarn --version
   - yarn global add polymer-cli
-  - which polymer
   - echo not yet polymer --version
   - echo not yet polymer analyze
   - echo not yet polymer install
