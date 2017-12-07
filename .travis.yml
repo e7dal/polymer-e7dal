@@ -11,8 +11,7 @@ addons:
       - google-chrome-stable
 language: node_js
 node_js:
-  - "node"
-  - "8"
+  - "6"
 install: yarn install 
 before_script:
   - npm --version
