@@ -17,11 +17,9 @@ before_script:
   - docker run hello-world
   - npm install -g yarn
   - yarn --version
-  - yarn global add bower
   - yarn global add polymer-cli
   - bower --version
   - polymer --version
-  - bower install
   - yarn install
 script:
   - xvfb-run npm test
