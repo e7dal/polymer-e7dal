@@ -10,16 +10,16 @@ addons:
 language: node_js
 node_js:
   - "node"
-  - "6"
+  - "8"
 before_script:
   - npm --version
-  - bower --version
-  - yarn --version
   - docker --version
   - docker run hello-world
-  - npm install -g bower
+  - npm install -g yarn
   - npm install -g polymer-cli
-  - bower install
+  - yarn --version
+  - polymer --version
+  - yarn install
 script:
   - xvfb-run npm test
   - xvfb-run npm run test:integration
