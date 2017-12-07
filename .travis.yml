@@ -16,9 +16,10 @@ before_script:
   - npm install -g yarn
   - yarn --version
   - yarn global add polymer-cli
-  - polymer --version
-  - polymer analyze
-  - polymer install
+  - which polymer
+  - echo not yet polymer --version
+  - echo not yet polymer analyze
+  - echo not yet polymer install
   - svn export https://github.com/e7dal/weaviate/trunk/docker ~/tryweaviate
   - cd ~/tryweaviate
   - bash run-services.sh
