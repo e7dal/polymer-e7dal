@@ -26,7 +26,7 @@ before_script:
   - GET_ROOTKEY=$(docker exec -it weaviate grep -s ROOTKEY /var/weaviate/first_run.log|sed 's/.*ROOTKEY=//')
   - echo $GET_ROOTKEY
   - sudo apt-get install httpie
-  - http X-XPI-KEY:$GET_ROOTKEY :8070/weaviate/v1/meta 
+  - http :8070/weaviate/v1/meta X-API-KEY:$GET_ROOTKEY
   - cd -
   - npm install -g polymer-cli
   - polymer --version
